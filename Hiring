@@ -1,0 +1,57 @@
+def hire_assistant(applicants):
+    """
+    Return the number of assistant hired.
+    Inputs:
+    - applicants: a list of the numbers that represent the level of qualification of 
+    the applicants; the higher the number, the better qualified
+    
+    Outputs:
+    - hires: Number of assistants hired
+    """
+    # your code here
+    hires = 1
+    current = applicants[0]
+    for i in applicants:
+        if i > current:
+            current = i
+            hires += 1
+    return hires
+
+assert(hire_assistant([1])==1)
+assert(hire_assistant([0.1, 0.2, 0.3, 0.4])==4)
+
+
+
+
+import random
+import matplotlib.pyplot as plt
+def experimental_hires(N):
+    ''' 
+    Inputs:
+    - N: the number of applicants 
+    the applicants; the higher the number, the better qualified
+    
+    Outputs:
+    - experimental hires: average numbe rof assistants hired. 
+    '''
+    # your code here
+    #Creating the random list
+    Applicants = []
+    for a in range(N):
+        Applicants.append(random.random())
+    #Using the previous code to calculate number of hires
+    experimental_hires = hire_assistant(Applicants)
+    
+    return experimental_hires
+
+Experimental_list = []
+for a in range(1,1001): 
+    Experimental_list.append(experimental_hires(a))
+    
+plt.plot([a for a in range(1,1001)], Experimental_list)
+plt.legend()
+plt.title('Average number of hires for an applicant pool')
+plt.xlabel('Applicant pool size')
+plt.ylabel('Average number of hires')
+plt.show()
+ 
