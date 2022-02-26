@@ -1,0 +1,46 @@
+def fibonacci_iterative(n):
+    ### YOUR CODE HERE
+    """
+    creates a fibonnaci sequence using an interative approach.   
+    
+    Parameters
+    ----------
+    n : integer of the nth value of the sequence
+
+    Returns
+    -------
+    n : the nth value of the sequence
+    """
+    sequence = [0, 1]
+    for i in range(n-1):
+        f_sum = sequence[i] + sequence[i+1]
+        sequence.append(f_sum)
+    #return(sequence)  - to see the entire sequence
+    return(sequence[n])
+
+def fibonacci_recursive(n):
+    ### YOUR CODE HERE
+    """
+    creates a fibonnaci sequence using an recursive approach
+    Parameters
+    ----------
+    n : integer of the nth value of the sequence
+
+    Returns
+    -------
+    n : the nth value of the sequence
+    """
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return(fibonacci_recursive(n-1) + fibonacci_recursive(n-2))
+    
+    
+#print(fibonacci_iterative(6))
+    
+assert fibonacci_iterative(0) == 0
+assert fibonacci_recursive(0) == 0
+assert fibonacci_iterative(4) == 3
+assert fibonacci_recursive(4) == 3
